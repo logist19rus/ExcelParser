@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewExcelLoadRogun2020", "NewExcelLoadRogun2020\NewExcelLoadRogun2020.csproj", "{8536D75B-B82C-45D5-A420-CF40615E5C07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8536D75B-B82C-45D5-A420-CF40615E5C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8536D75B-B82C-45D5-A420-CF40615E5C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8536D75B-B82C-45D5-A420-CF40615E5C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8536D75B-B82C-45D5-A420-CF40615E5C07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {872032DC-9169-4A62-AF52-E7E8F85B471C}
+	EndGlobalSection
+EndGlobal
