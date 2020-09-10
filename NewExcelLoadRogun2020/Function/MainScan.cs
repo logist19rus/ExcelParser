@@ -75,6 +75,7 @@ namespace NewExcelLoadRogun2020.Function
 
                         for (int k = 0; k < thisCol.Count && startScan < 1; k++)
                         {
+                            var NowColNum = GetRowIdFromXlsCol(thisCol[k].location);
                             if (GetRowIdFromXlsCol(thisCol[k].location) == fileInfo.idStartValues)
                                 startScan = k;
                             else if (GetRowIdFromXlsCol(thisCol[k].location) == fileInfo.idType)
@@ -193,9 +194,9 @@ namespace NewExcelLoadRogun2020.Function
             Models.FileInfo fileInfo = new Models.FileInfo();
             int startScan = 0;
 
-            for (int i = 0; i < myCol.Count & !fileInfo.Filled(); i++)
+            for (int i = 2; i < myCol.Count & !fileInfo.Filled(); i++)
             {
-                if (fileInfo.idType == 0  && (((string)myCol[i]).ToLower().Contains("анкер") || ((string)myCol[i]).ToLower().Contains("прибора")))
+                if (fileInfo.idType == 0  && (((string)myCol[i]).ToLower().Contains("прибора") || ((string)myCol[i]).ToLower().Contains("анкер") || ((string)myCol[i]).ToLower().Replace(" ", "").Contains("meofpoint")))
                 {
                     fileInfo.idType = GetRowIdFromXlsCol(myCol[i].location);
                 }
@@ -228,7 +229,13 @@ namespace NewExcelLoadRogun2020.Function
             }//запомнили все существующие на листе даты
 
             var valuesRowStr = getMyRow(workbookPart, sheet, fileInfo.idStartValues);
-            foreach(var x in valuesRowStr)
+            var valuesRowStrGF = getMyRow(workbookPart, sheet, fileInfo.idStartValues + 1);// esli slomayetsa ydolyay GOVNO
+            foreach (var x in valuesRowStrGF)
+            {
+                if (x.value.ToLower().Contains("показ") || x.value.ToLower().Contains("градус"))
+                    fileInfo.idValues.Add(new XlsSqrt(GetColIdFromXlsCol(x.location).ToString(), x.location));
+            }//dosydova ydolyay
+            foreach (var x in valuesRowStr)
             {
                 if (x.value.ToLower().Contains("показ") || x.value.ToLower().Contains("градус"))
                     fileInfo.idValues.Add(new XlsSqrt(GetColIdFromXlsCol(x.location).ToString(), x.location));
@@ -270,7 +277,8 @@ namespace NewExcelLoadRogun2020.Function
 
             do
             {
-                char nowCh = (char)('A' + (idRow % 26) - 1);
+                idRow--;
+                char nowCh = (char)('A' + (idRow % 26));
                 idRowStr = nowCh + idRowStr;
                 idRow = idRow / 26;
             } while (idRow > 0);

@@ -13,14 +13,28 @@ namespace NewExcelLoadRogun2020
         {
             string path = @"C:\logist\Data\NewRogun2020\all\";
             string pathTest = @"C:\logist\Data\NewRogun2020\";
-            var zamery = MainScan.MultiThreadScan(pathTest);
+            var zamery = MainScan.MultiThreadScan(path);
 
             List<ExportToDBClass> exports = Zamer.ToDBList(zamery);
+            var test = new List<string>();
+            //foreach(var x in exports)
+            //{
+            //    bool repeat = false;
+            //    foreach(var n in test)
+            //    {
+            //        if (x.ProjectNumber == n)
+            //        {
+            //            repeat = true;
+            //            break;
+            //        }
+            //    }
+            //    if (!repeat) test.Add(x.ProjectNumber);
+            //}
 
             //zamery.Clear();
 
          
-             Console.ReadLine();
+              Console.ReadLine();
         }
     }
 }
